@@ -1,0 +1,78 @@
+zookeeper-server-start.bat ../../config/zookeeper.properties
+
+
+kafka-server-start.bat ../../config/server.properties
+
+schema-registry-start.bat C:\confluent-5.3.2-2.12\confluent-5.3.2\etc\schema-registry\schema-registry.properties
+
+
+
+kafka-topics.bat --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic MobileClickStream
+
+kafka-topics.bat --list --zookeeper localhost:2181
+
+
+kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic ClickStream --from-beginning
+kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic MobileClickStream --from-beginning
+
+
+kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic ClickStreamTest --from-beginning
+
+
+kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic MobileClickStreamTest --from-beginning
+
+
+$ ssh -i "pavan.pem" ec2-user@ec2-18-221-196-9.us-east-2.compute.amazonaws.com
+sudo alternatives --set javac /home/ec2-user/jdk1.8.0_151/bin/javac
+
+curl -L https://cnfl.io/cli | sh -s -- -b /home/ec2-user/confluent_test/schema_test/bin
+curl -L https://cnfl.io/cli | sh -s -- -b confluent_test/schema_test/bin
+
+export CONFLUENT_HOME=/home/ec2-user/confluent_test/schema_test
+
+confluent local start [<service>] --path /home/ec2-user/confluent_test/schema_test
+sudo ec2-user confluent-hub install \
+--no-prompt confluentinc/kafka-connect-datagen:latest
+
+C:\>C:\\kafka_2.11-2.4.0\\bin\\windows\\kafka-topics.bat --zookeeper localhost:2181  --delete  --topic MobileClickStream
+
+zookeper-shell.bat deleteall /brokers/topics/ClickStream
+
+
+ec2-18-221-196-9.us-east-2.compute.amazonaws.com:9092
+http://ec2-18-221-196-9.us-east-2.compute.amazonaws.com:8090
+
+
+
+
+
+ curl -X POST -H "Content-Type: application/vnd.schemaregistry.v1+json" \
+    --data '{"schema":  "{\"namespace\": \"com.kindredgroup.sampleevent\",\"type\": \"record\", \"name\": \"EventGroup\", \"fields\": [{ \"name\": \"id\", \"type\": \"long\",\"default\": 0,\"doc\": \"Event group id.\"},{\"name\": \"name\",\"type\": \"string\",\"default\": \"\", \"doc\": \"\"},{\"name\": \"eventTimestamp\", \"type\": \"long\", \"default\": 0, \"doc\": \"\"},{\"name\": \"status\",\"type\": \"long\", \"default\": 0,  \"doc\": \"\" },{\"name\": \"customerId\", \"type\": \"long\",\"default\": 0,\"piiField\": true,\"ipAddressField\": false,\"doc\": \"Customer Id.\"},{ \"name\": \"internalSystemInfo\",\"type\": \"string\",\"default\": \"\", \"piiField\": true, \"ipAddressField\": false,\"doc\": \"Internal system info. Like, session Id.\"},{\"name\": \"jurisdiction\",\"type\": [ \"string\",{\"type\": \"enum\", \"name\": \"Country\",\"symbols\": [ \"MT\",\"UK\", \"SJ\",\"IT\",\"FR\",\"VS\",\"FE\",\"DK\"]}], \"doc:\": \"Country information\" },{ \"name\": \"channel\", \"type\": [ \"string\",{  \"type\": \"enum\", \"name\": \"Channel\",\"symbols\": [\"WEB\",\"PHONE\", \"MOBILE\",\"NATIVE\" ] }],\"doc:\": \"Channel information\"},{\"name\": \"brand\",\"type\": [\"string\",{ \"type\": \"enum\",\"name\": \"Brand\",\"symbols\": [\"UNIBET\",\"MARIA\",\"STANJAMES\"]}],\"doc:\": \"Brand information\"}]}"}' \
+     http://localhost:8090/subjects/Kafka-value/versions
+
+
+ curl -X POST -H "Content-Type: application/vnd.schemaregistry.v1+json" \
+    --data '{"schema":  "{\"namespace\": \"com.kindredgroup.sampleevent\", \"type\": \"record\", \"name\": \"EventGroup\", \"fields\": [{ \"name\": \"id\", \"type\": \"long\",\"default\":0,      \"doc\": \"Event group id.\"},{\"name\": \"name\",\"type\": \"string\",\"default\": \"\",\"doc\": \"\"}, {\"name\": \"eventTimestamp\", \"type\": \"long\", \"default\": 0, \"doc\": \"\" },{ \"name\": \"status\",\"type\": \"long\",\"default\": 0,\"doc\": \"\"}]}"}' \
+     http://localhost:8090/subjects/Kafka-value/versions
+	 
+	  curl -X POST -H "Content-Type: application/vnd.schemaregistry.v1+json"   --data '{"schema": "{\"type\": \"string\"}"}'   http://localhost:8090/subjects/Kafka-key/versions
+	 
+	 
+	 schema_id =21
+	 
+	 http://localhost:8090/schemas/ids/21
+
+
+C:\>c:\cygwin64\bin\bash -l /cygdrive/c/confluent/4.0.0/bin/kafka-avro-console-consumer --bootstrap-server localhost:9092 --topic ClickStream --property schema.registry.url=http://localhost:8090 >> tmp.txt
+
+schema-registry-start.bat C:\\confluent-5.3.2\\etc\\schema-registry\\schema-registry.properties
+
+C:\confluent-5.3.2-2.12\confluent-5.3.2\bin\windows\schema-registry-start.bat C:\confluent-5.3.2-2.12\confluent-5.3.2\etc\
+schema-registry\schema-registry.properties
+
+zookeeper-server-start.bat C:\confluent-5.3.2-2.12\confluent-5.3.2\etc\kafka\zookeeper.properties
+
+curl -X POST -H "Content-Type: application/vnd.schemaregistry.v1+json" \
+  --data '{"schema": "{\"type\": \"string\"}"}' \
+  http://localhost:8090/subjects/Kafka-key/versions
+{"id":1}

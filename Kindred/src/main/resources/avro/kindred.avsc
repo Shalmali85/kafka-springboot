@@ -1,0 +1,101 @@
+{
+  "namespace": "com.kindredgroup.sampleevent",
+  "type": "record",
+  "name": "EventGroup",
+  "fields": [
+    {
+      "name": "id",
+      "type": "long",
+      "default": 0,
+      "doc": "Event group id."
+    },
+    {
+      "name": "name",
+      "type": "string",
+      "default": "",
+      "doc": ""
+    },
+    {
+      "name": "eventTimestamp",
+      "type": "long",
+      "default": 0,
+      "doc": ""
+    },
+    {
+      "name": "status",
+      "type": "long",
+      "default": 0,
+      "doc": ""
+    },
+    {
+      "name": "customerId",
+      "type": "long",
+      "default": 0,
+      "piiField": true,
+      "ipAddressField": false,
+      "doc": "Customer Id."
+    },
+    {
+      "name": "internalSystemInfo",
+      "type": "string",
+      "default": "",
+      "piiField": true,
+      "ipAddressField": false,
+      "doc": "Internal system info. Like, session Id."
+    },
+    {
+      "name": "jurisdiction",
+      "type": [
+        "string",
+        {
+          "type": "enum",
+          "name": "Country",
+          "symbols": [
+            "MT",
+            "UK",
+            "SJ",
+            "IT",
+            "FR",
+            "VS",
+            "FE",
+            "DK"
+          ]
+        }
+      ],
+      "doc:": "Country information"
+    },
+    {
+      "name": "channel",
+      "type": [
+        "string",
+        {
+          "type": "enum",
+          "name": "Channel",
+          "symbols": [
+            "WEB",
+            "PHONE",
+            "MOBILE",
+            "NATIVE"
+          ]
+        }
+      ],
+      "doc:": "Channel information"
+    },
+    {
+      "name": "brand",
+      "type": [
+        "string",
+        {
+          "type": "enum",
+          "name": "Brand",
+          "symbols": [
+            "UNIBET",
+            "MARIA",
+            "STANJAMES"
+          ]
+        }
+      ],
+      "doc:": "Brand information"
+    }
+  ]
+}

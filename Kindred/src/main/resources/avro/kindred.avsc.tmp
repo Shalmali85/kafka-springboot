@@ -1,0 +1,32 @@
+{
+  "namespace": "com.kindredgroup.sampleevent",
+  "type": "record",
+  "name": "EventGroup",
+  "fields": [
+    {
+      "name": "id",
+      "type": "long",
+      "default": 0,
+      "doc": "Event group id."
+    },
+    {
+      "name": "name",
+      "type": "string",
+      "default": "",
+      "doc": ""
+    },
+    {
+      "name": "eventTimestamp",
+      "type": "long",
+      "default": 0,
+      "doc": ""
+    },
+    {
+      "name": "status",
+      "type": "long",
+      "default": 0,
+      "doc": ""
+    }
+
+  ]
+}
